@@ -1,5 +1,4 @@
-# capstone-project-1
-# Vehicle Rental Program
+# Vehicle Rental Program, capstone-project-1
 
 ## Context
 This mini project is a motorbike rental program using Python. This program was created for vehicle rental business to show spesific vehicle and rent the vehicle. This program also built with the aim of making it easier for admin users to do a report and rental transactions. 
