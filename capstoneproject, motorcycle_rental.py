@@ -354,6 +354,7 @@ def sewa():
                     nama_perental = input("\nNama Perental: ")
                     durasi_sewa = input("\nTotal hari rental motor (input angka saja): ")
                    
+                    hargasewa_int = daftar_motor[i]['harga_harian']
                     if durasi_sewa.isdigit():
                         durasi_sewa = int(durasi_sewa)
                         if durasi_sewa <= 7 :
@@ -363,7 +364,7 @@ def sewa():
                             daftar_motor[i]['nama_penyewa'] = nama_perental
                             daftar_motor[i]['tanggal_sewa'] = tanggal_rental
                             daftar_motor[i]['pengembalian'] = tanggal_pengembalian
-                            totalhargaSewa = daftar_motor[i]['harga_harian'] * int(durasi_sewa)
+                            totalhargaSewa = int(hargasewa_int) * int(durasi_sewa)
                             print("\nTotal Harga yang harus dibayar adalah")
                             print(f"Rp.{totalhargaSewa}")
 
@@ -403,38 +404,42 @@ def sewa():
     rental()
 
 def pengembalian_rental():
-    while True:
-        tampil_motorTerental("tidak ada")
-        validasi = input("Apakah anda ingin mengembalikan motor Y/N ? ").upper()
-        if validasi.upper() == "Y":
-            plat_= input("\nMasukan Plat nomor motor yang akan dikembalikan: ").upper()
-            for i in range(len(daftar_motor)):
-                if plat_ == daftar_motor[i]['plat']:
-                    validasi_pengembalian = input("\nApakah anda yakin ingin mengembalikan motor ini (Y/N)? ").upper()
-                    if validasi_pengembalian == "Y":
-                        daftar_motor[i]['unit'] = 'ada'
-                        print("\nMotor berhasil dikembalikan!")
-                        rental()
-                        break
-                    elif validasi_pengembalian == "N":
-                        print('\nMotor tidak jadi dikembalikan, kembali ke menu "rental"')
-                        rental()
-                        break
-                    else:
-                        print("Masukan input yang benar!")
-                        rental()
-                        break 
-                else :
-                    print("Plat tidak ditemukan!")
+    tampil_motorTerental("tidak ada")  # Menampilkan daftar motor yang telah disewa
+    plat = input("Apakah anda ingin mengembalikan motor Y/N ? ").upper()
+    
+    if plat == "Y":
+        plat_motor = input("\nMasukkan Plat nomor motor yang akan dikembalikan: ").upper()
+        
+        motor_ditemukan = False
+        
+        for i in range(len(daftar_motor)):
+            if plat_motor == daftar_motor[i]['plat']:
+                motor_ditemukan = True
+                validasi_pengembalian = input("\nApakah anda yakin ingin mengembalikan motor ini (Y/N)? ").upper()
+                
+                if validasi_pengembalian == "Y":
+                    daftar_motor[i]['unit'] = 'ada'
+                    print("\nMotor berhasil dikembalikan!")
+                    rental()
+                    return
+                elif validasi_pengembalian == "N":
+                    print('\nMotor tidak jadi dikembalikan, kembali ke menu "rental"')
+                    rental()
+                    return
+                else:
+                    print("Masukkan input yang benar!")
                     pengembalian_rental()
-        elif validasi.upper() == "N":
-            print("\nPengembalian tidak berhasil! kembali ke menu rental")
-            rental()
-            break
-        else :
-            print("\nInput salah! pilih Y/N")
+           
+        if not motor_ditemukan:
+            print("Plat tidak ditemukan!")
             pengembalian_rental()
-            break
+    elif plat == "N":
+        print("\nPengembalian tidak berhasil! Kembali ke menu rental")
+        rental()
+    else:
+        print("\nInput salah! Pilih Y/N")
+        pengembalian_rental()
+
 
 def cek_ketersediaan(daftar_motor):
     while True:
@@ -478,7 +483,6 @@ def rental():
             print("Kode salah! Masukan [1-4]")
             rental()
             break
-
 
 def exit_():
     validasi_exit = input("\nApakah anda yakin meninggalkan program Y/N? ").upper()
