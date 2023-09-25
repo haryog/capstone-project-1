@@ -66,7 +66,7 @@ def read():
                 print("Tidak ada Daftar Motor, silahkan tambah daftar motor terlebih dahulu")
         elif code_def_read == "2":
             if len(daftar_motor) > 0:
-                pilih = input("Masukan Nama Motor yang ingin ditampilkan: ").title()
+                pilih = input("\nMasukan Nama Motor yang ingin ditampilkan: ").title()
                 present = False
                 for i in range(len(daftar_motor)):
                     if pilih == daftar_motor[i]["nama"]: 
