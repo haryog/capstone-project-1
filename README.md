@@ -1,4 +1,5 @@
 # Vehicle Rental Program, capstone-project-1
+![The 90s](https://github.com/haryog/capstone-project-1/assets/144018986/32c49308-1e3e-4bd0-b40f-ea0eb938c98a)
 
 ## Context
 This mini project is a motorbike rental program using Python. This program was created for vehicle rental business to show spesific vehicle and rent the vehicle. This program also built with the aim of making it easier for admin users to do a report and rental transactions. 
