@@ -466,11 +466,10 @@ def rental():
             break
         elif code_def_rental == "3":
             if cek_ketersediaan(daftar_motor):
-                print("\nTidak ada motor yang sedang disewa")
+                print("\nTidak ada motor yang sedang disewa") #jika tidak ada motor yang dirental
                 rental() 
             else:
-                # tampil_motorTerental("tidak ada")
-                pengembalian_rental()
+                pengembalian_rental() # jika ada diarahkan def pengembalian
             break
         elif code_def_rental == "4":
             mainMenu()
