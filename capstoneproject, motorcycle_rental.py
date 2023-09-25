@@ -41,7 +41,7 @@ daftar_motor = [
     ]
     
 def tampil_semuamotor():
-    print("\n \t\t============== Data Daftar Motor ==============\n")
+    print("\n\t\t============== Data Daftar Motor ==============\n")
     print("No.\t|Plat\t\t\t|Nama Motor\t|Jenis\t\t|Harga Sewa\t\t|Kondisi\t|Unit")
     for i in range(len(daftar_motor)):
         print(f'{i+1}\t|{daftar_motor[i]["plat"]}\t\t|{daftar_motor[i]["nama"]}\t\t|{daftar_motor[i]["jenis"]}\t\t| Rp.{daftar_motor[i]["harga_harian"]}\t\t|{daftar_motor[i]["kondisi"]}\t\t|{daftar_motor[i]["unit"]}')
@@ -185,9 +185,6 @@ def hapus():
                         print("Inputan salah, masukan dengan Y/N!")
                         hapus()
                         break
-                else:
-                    print('Masukan plat nomor motor yang sesuai dengan kolom "Plat"!')
-                    break
             else:
                 print("Masukan plat nomor yang valid!")
         elif code_def_uptd == "2":
